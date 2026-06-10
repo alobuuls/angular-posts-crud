@@ -1,0 +1,14 @@
+<nav id="mainnav" class="mainnav">
+  <ul class="menu">
+    <li routerLinkActive="active">
+      <a [routerLink]="['posts']">Posts</a>
+      <ul class="submenu">
+        <li routerLinkActive="active"><a [routerLink]="['posts/new']">New</a></li>
+      </ul>
+    </li>
+
+    <li routerLinkActive="active"><a [routerLink]="['games']">Games</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['movies']">Movies</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['devices']">Devices</a></li>
+  </ul>
+</nav>
