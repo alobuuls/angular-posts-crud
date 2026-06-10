@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpointPosts: 'https://strap-join-married-dts.trycloudflare.com',
+  endpointPosts: 'https://manufactured-character-calcium-address.trycloudflare.com',
 };
