@@ -1,0 +1,21 @@
+<div *ngIf="vm$ | async as vm">
+  <!-- Loading -->
+  <h2 *ngIf="vm.status === 'loading'">Loading...</h2>
+
+  <!-- Error -->
+  <h2 *ngIf="vm.status === 'error'">{{ vm.error.message }}</h2>
+
+  <!-- Success -->
+  <ng-container *ngIf="vm.status === 'success'">
+    <!-- Not found -->
+    <div *ngIf="!vm.data">
+      <h2>Not found</h2>
+    </div>
+
+    <!-- Data -->
+    <div class="ctn-posts" *ngIf="vm.data">
+      <h2>{{ vm.data.author }} - ${{ vm.data.title }}</h2>
+      <p>{{ vm.data.content }}</p>
+    </div>
+  </ng-container>
+</div>
