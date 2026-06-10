@@ -9,6 +9,7 @@ const KEY_LS = 'form-create';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
+  styleUrls: ['./post-form.component.css'],
 })
 export class PostFormComponent implements OnInit {
   @Input() mode: 'create' | 'edit' = 'create';

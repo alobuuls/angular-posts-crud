@@ -1,25 +1,28 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <div>
+  <div class="field">
     <label for="title">Title</label>
     <input id="title" type="text" formControlName="title" />
+
     <div class="danger" *ngIf="showErrors(title)">
       <p *ngIf="title.errors?.['required']">title is required</p>
       <p *ngIf="title.errors?.['minlength']">this field must have at least 5 characters.</p>
     </div>
   </div>
 
-  <div>
+  <div class="field">
     <label for="content">Content</label>
     <textarea id="content" formControlName="content"></textarea>
+
     <div class="danger" *ngIf="showErrors(content)">
       <p *ngIf="content.errors?.['required']">content is required</p>
       <p *ngIf="content.errors?.['minlength']">this field must have at least 5 characters.</p>
     </div>
   </div>
 
-  <div>
+  <div class="field">
     <label for="author">Author</label>
     <input id="author" type="text" formControlName="author" />
+
     <div class="danger" *ngIf="showErrors(author)">
       <p *ngIf="author.errors?.['required']">author is required</p>
       <p *ngIf="author.errors?.['minlength']">this field must have at least 5 characters.</p>
@@ -27,9 +30,12 @@
   </div>
 
   <button type="submit" [disabled]="form.invalid || isSendingForm">
-    <span *ngIf="!isSendingForm">{{ isCreate ? 'Create Post' : 'Edit Post' }}</span>
+    <span *ngIf="!isSendingForm">
+      {{ isCreate ? 'Create Post' : 'Edit Post' }}
+    </span>
+
     <span *ngIf="isSendingForm">
-      <i class="fa fa-refresh loader-btn" aria-hidden="true"></i>
+      <i class="fa fa-refresh loader-btn"></i>
       Sending...
     </span>
   </button>
