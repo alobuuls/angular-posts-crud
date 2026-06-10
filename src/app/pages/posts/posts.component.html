@@ -1,0 +1,61 @@
+<h1>Posts</h1>
+
+<div *ngIf="vm$ | async as vm">
+  <!-- LOADING -->
+  <h2 *ngIf="vm.status === 'loading'">{{ vm.loadingMsg }}...</h2>
+
+  <!-- ERROR -->
+  <h2 *ngIf="vm.status === 'error'">
+    {{ vm.error.message }}
+  </h2>
+
+  <!-- SUCCESS -->
+  <ng-container *ngIf="vm.status === 'success' && vm.data as data">
+    <!-- EMPTY STATE -->
+    <ng-container *ngIf="hasNoActivePosts(data); else list">
+      <h2>There are no posts.</h2>
+      <p>Create a new post to see it here.</p>
+      <a [routerLink]="['/posts/new']">Create</a>
+    </ng-container>
+
+    <!-- LIST -->
+    <ng-template #list>
+      <div class="ctn-posts">
+        <h2>Author</h2>
+        <h2>Title</h2>
+        <h2>Content</h2>
+        <h2>View Detail</h2>
+        <h2>Edit</h2>
+        <h2>Delete</h2>
+      </div>
+
+      <div class="container" *ngFor="let p of data; trackBy: trackByPostId">
+        <div class="ctn-posts" [class.ctn-removed-post]="p.wasRemoved">
+          <ng-container *ngIf="p.wasRemoved; else activePost">
+            <span class="danger">
+              The product (<b class="highlight">{{ p.title }}</b
+              >) has been removed
+            </span>
+          </ng-container>
+
+          <ng-template #activePost>
+            <h2>{{ p.author }}</h2>
+            <p>{{ p.title }}</p>
+            <p>{{ p.content }}</p>
+
+            <a class="btn-post detail" [routerLink]="['/posts/detail', p.id]"> Detail </a>
+            <a
+              class="btn-post edit"
+              [routerLink]="['/posts/edit', p.id]"
+              [state]="{ dataFromUrl: true, title: p.title, content: p.content, author: p.author }"
+            >
+              Edit
+            </a>
+
+            <button class="btn-post remove" (click)="confirmDelete(p)">Remove</button>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</div>

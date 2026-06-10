@@ -1,0 +1,42 @@
+.ctn-posts {
+  align-items: center;
+  background-color: #000000;
+  box-shadow: 1px 0 0 1px #ffffff inset;
+  color: #ffffff;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  height: 6rem;
+  margin-inline: auto;
+  padding: 1rem;
+  width: 90%;
+
+  & a {
+    color: #fff;
+  }
+}
+
+.btn-post {
+  color: #ffffff;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.remove {
+  background-color: #360000;
+}
+
+.edit {
+  background-color: #002336;
+}
+
+.detail {
+  background-color: #003436;
+}
+
+.ctn-removed-post {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
